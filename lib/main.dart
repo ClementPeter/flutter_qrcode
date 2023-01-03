@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,18 +33,25 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final TextEditingController _controller = TextEditingController();
+  //final TextEditingController _controller = TextEditingController();
   bool isFilled = false;
   String qrResponse = " ";
   String inputValue = " ";
 
-  ////launch Url
-  // Future<void> _launchNewsUrl(String newsUrl) async {
-  //   var url = Uri.parse(newsUrl);
-  //   if (!await launchUrl(url)) {
-  //     throw 'Could not launch $url';
-  //   }
-  // }
+  //launch Url
+  Future<void> _launchNewsUrl(String qrLink) async {
+    var url = Uri.parse(qrLink);
+    if (!await launchUrl(url)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            "Could not launch $url",
+          ),
+        ),
+      );
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,19 +84,22 @@ class _MyHomePageState extends State<MyHomePage> {
                     }
                   },
                   decoration: InputDecoration(
-                    hintText: "Genererate QR Code or Scan and paste code here",
+                    hintText: "Generate QR Code or Scan and paste QR link here",
                     focusedBorder: InputBorder.none,
                     suffixIcon: IconButton(
-                      icon: const Icon(Icons.send),
-                      onPressed: (() {
-                        if (inputValue.contains("http") ||
-                            inputValue.contains("https")) {
-                          print("launch url");
+                      icon: const Icon(Icons.search),
+                      onPressed: (() async {
+                        if (inputValue.contains("https:")) {
+                          setState(() async {
+                            await _launchNewsUrl(inputValue);
+                          });
+
+                          print(inputValue);
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text(
-                                "Insert Url Link",
+                                "Insert a proper Url Link",
                               ),
                             ),
                           );
@@ -114,27 +125,37 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
-          String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+          String barcodeScanResult = await FlutterBarcodeScanner.scanBarcode(
               "#ff6666", "Cancel", true, ScanMode.QR);
-
-          setState(
-            () async {
-              qrResponse =
-                  barcodeScanRes == "-1" ? "No QR found" : barcodeScanRes;
-              // await Clipboard.setData(ClipboardData(text: qrResponse));
+          setState(() async {
+            if (barcodeScanResult == "-1") {
+              qrResponse = "No QR found";
               await Clipboard.setData(ClipboardData(text: qrResponse)).then(
                 (_) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(barcodeScanRes == "-1"
-                          ? "No QR found"
-                          : barcodeScanRes),
+                    const SnackBar(
+                      content: Text(
+                        "No QR found",
+                      ),
                     ),
                   );
                 },
               );
-            },
-          );
+            } else if (barcodeScanResult.contains("http:")) {
+              qrResponse = barcodeScanResult.replaceAll("http:", "https:");
+              await Clipboard.setData(ClipboardData(text: qrResponse)).then(
+                (_) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text(
+                        "QR Code copied to clipboard",
+                      ),
+                    ),
+                  );
+                },
+              );
+            }
+          });
         },
         tooltip: 'Scan QRCode',
         label: const Text("Scan QRCode"),
