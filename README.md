@@ -20,11 +20,11 @@ samples, guidance on mobile development, and a full API reference.
 
 
 ## 💻 Description
+- QR Scanning and Generating App
 
-- News App
-> API : https://newsapi.org/
 
 ## ✨ Screenshots
+
 
 
 
