@@ -47,6 +47,14 @@ samples, guidance on mobile development, and a full API reference.
 | [**url_launcher widget**](https://pub.dev/packages/url_launcher)   |  For launching QR Code URL      | -->
 
 
+## 🔌 Plugins
+
+| Name                                                    | Usage                                               |
+| ------------------------------------------------------- | --------------------------------------------------- |
+| [**WebView Flutter**]https://pub.dev/packages/webview_flutter)    | Interfacing WebView In-App                |
+| [**Flutter Youtube Downloader**]https://pub.dev/packages/flutter_youtube_downloader/versions/0.0.1)    | Plugin to Download Videos off Youtube |
+
+
 
 
 
