@@ -33,28 +33,22 @@ samples, guidance on mobile development, and a full API reference.
 
 ## 🔌 Libraires Used
 
-
-| Name                                                    | Usage                                               |
-| ------------------------------------------------------- | ---------------------------------------------- ----- |
-
-| [**url launcher**](https://pub.dev/packages/url_launcher)   |  For launching News Url Link     |
-<!-- 
 | Name                                                    | Usage                                               |
 | ------------------------------------------------------- | --------------------------------------------------- |
 
-| [**barcode widget**](https://pub.dev/packages/barcode_widget)   |  For generating QR Code from text input        |
-| [**flutter barcode scanner**](https://pub.dev/packages/flutter_barcode_scanner)   |  For Scanning QR Code with camera      |
-| [**url_launcher widget**](https://pub.dev/packages/url_launcher)   |  For launching QR Code URL      | -->
+| [**barcode widget**]https://pub.dev/packages/barcode_widget)   |  For generating QR Code from text input        |
+| [**flutter barcode scanner**]https://pub.dev/packages/flutter_barcode_scanner)   |  For Scanning QR Code with camera      |
+| [**url_launcher widget**]https://pub.dev/packages/url_launcher)   |  For launching QR Code URL      |
 
 
-## 🔌 Plugins
+<!-- ## 🔌 Plugins
 
 | Name                                                    | Usage                                               |
 | ------------------------------------------------------- | --------------------------------------------------- |
-| [**WebView Flutter**]https://pub.dev/packages/webview_flutter)    | Interfacing WebView In-App                |
-| [**Flutter Youtube Downloader**]https://pub.dev/packages/flutter_youtube_downloader/versions/0.0.1)    | Plugin to Download Videos off Youtube |
+| [**barcode widget**]https://pub.dev/packages/barcode_widget)    | For generating QR Code from text input             |
+| [**flutter barcode scanner**]https://pub.dev/packages/flutter_barcode_scanner)    | Plugin to Download Videos off Youtube |
 
-
+ -->
 
 
 
