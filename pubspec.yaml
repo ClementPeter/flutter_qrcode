@@ -38,7 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   barcode_widget: ^2.0.3
   flutter_barcode_scanner: ^2.0.0
-  # url_launcher: any
+  url_launcher: any
 
 dev_dependencies:
   flutter_test:
