@@ -23,7 +23,7 @@ samples, guidance on mobile development, and a full API reference.
 - QR Scanning and Generating App
 
 
-## 📸 Screen shots
+## 📸 Screenshots
 
 
 ![Screenshot_20230103-145500](https://user-images.githubusercontent.com/61213263/210377172-0870fac8-d1ee-4ed7-97f8-b55d4906fcd5.jpg)
